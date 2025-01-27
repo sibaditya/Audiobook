@@ -2,9 +2,7 @@ package com.example.audiobook.model
 
 import com.google.gson.annotations.SerializedName
 
-
 data class Extra(
-
     @SerializedName("url1") var url1: String? = null,
     @SerializedName("url2") var url2: String? = null,
     @SerializedName("url3") var url3: String? = null,
@@ -17,5 +15,4 @@ data class Extra(
     @SerializedName("facebook_handle") var facebookHandle: String? = null,
     @SerializedName("amazon_music_url") var amazonMusicUrl: String? = null,
     @SerializedName("instagram_handle") var instagramHandle: String? = null
-
 )

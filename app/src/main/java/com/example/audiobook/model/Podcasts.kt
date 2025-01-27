@@ -2,13 +2,9 @@ package com.example.audiobook.model
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.example.audiobook.model.Extra
-import com.example.audiobook.model.LookingFor
 import com.google.gson.annotations.SerializedName
-import kotlinx.serialization.Serializable
 
 data class Podcasts(
-
   @SerializedName("id")
     var id: String? = null,
   @SerializedName("rss")
@@ -41,6 +37,47 @@ data class Podcasts(
   @SerializedName("update_frequency_hours") var updateFrequencyHours: Long? = null,
   @SerializedName("listen_score_global_rank") var listenScoreGlobalRank: String? = null
 ): Parcelable {
+  constructor(parcel: Parcel) : this(
+    parcel.readString(),
+    parcel.readString(),
+    parcel.readString(),
+    parcel.readString(),
+    TODO("extra"),
+    parcel.readString(),
+    parcel.readString(),
+    parcel.readString(),
+    parcel.readString(),
+    parcel.readString(),
+    TODO("genreIds"),
+    parcel.readValue(Long::class.java.classLoader) as? Long,
+    parcel.readString(),
+    parcel.readString(),
+    parcel.readValue(Boolean::class.java.classLoader) as? Boolean,
+    parcel.readString(),
+    TODO("lookingFor"),
+    parcel.readValue(Boolean::class.java.classLoader) as? Boolean,
+    parcel.readValue(Long::class.java.classLoader) as? Long,
+    parcel.readValue(Long::class.java.classLoader) as? Long,
+    parcel.readString(),
+    parcel.readValue(Long::class.java.classLoader) as? Long,
+    parcel.readValue(Boolean::class.java.classLoader) as? Boolean,
+    parcel.readString(),
+    parcel.readValue(Long::class.java.classLoader) as? Long,
+    parcel.readValue(Long::class.java.classLoader) as? Long,
+    parcel.readValue(Boolean::class.java.classLoader) as? Boolean,
+    parcel.readValue(Long::class.java.classLoader) as? Long,
+    parcel.readString()
+  )
+  companion object CREATOR : Parcelable.Creator<Podcasts> {
+    override fun createFromParcel(parcel: Parcel): Podcasts {
+      return Podcasts(parcel)
+    }
+
+    override fun newArray(size: Int): Array<Podcasts?> {
+      return arrayOfNulls(size)
+    }
+  }
+
   override fun describeContents(): Int {
     return 0
   }

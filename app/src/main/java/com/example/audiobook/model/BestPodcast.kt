@@ -15,5 +15,4 @@ data class BestPodcast(
     @SerializedName("listennotes_url") var listennotesUrl: String? = null,
     @SerializedName("next_page_number") var nextPageNumber: Int? = null,
     @SerializedName("previous_page_number") var previousPageNumber: Int? = null
-
 )

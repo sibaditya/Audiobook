@@ -3,7 +3,6 @@ package com.example.audiobook.screens
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -13,7 +12,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -47,7 +45,7 @@ import com.example.audiobook.model.Podcasts
 import com.example.audiobook.repository.PodcastMapperManager
 
 
-// Start of the Detail screen for each cat.
+// Start of the Detail screen for each podcast.
 @Composable
 fun PodcastsDetailScreen(
     podcasts: Podcasts?,

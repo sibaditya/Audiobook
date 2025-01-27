@@ -2,9 +2,7 @@ package com.example.audiobook.model
 
 import com.google.gson.annotations.SerializedName
 
-
 data class PodcastDetails(
-
   @SerializedName("id") var id: String? = null,
   @SerializedName("rss") var rss: String? = null,
   @SerializedName("type") var type: String? = null,
@@ -36,5 +34,4 @@ data class PodcastDetails(
   @SerializedName("next_episode_pub_date") var nextEpisodePubDate: Int? = null,
   @SerializedName("update_frequency_hours") var updateFrequencyHours: Int? = null,
   @SerializedName("listen_score_global_rank") var listenScoreGlobalRank: String? = null
-
 )
