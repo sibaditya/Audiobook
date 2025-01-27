@@ -2,6 +2,7 @@
 activityKtx = "1.9.1"
 agp = "8.4.1"
 coilCompose = "3.0.4"
+coilComposeVersion = "2.7.0"
 compose = "1.0.0-beta01"
 converterGson = "2.9.0"
 converterScalars = "2.1.0"
@@ -40,7 +41,8 @@ androidx-lifecycle-viewmodel-compose = { module = "androidx.lifecycle:lifecycle-
 androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleLivedataKtx" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilComposeVersion" }
 compiler = { module = "com.github.bumptech.glide:compiler", version.ref = "glide" }
 compose = { module = "com.github.bumptech.glide:compose", version.ref = "compose" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }

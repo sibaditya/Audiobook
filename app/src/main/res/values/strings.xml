@@ -4,5 +4,6 @@
     <string name="settings">Settings</string>
     <string name="about">About</string>
     <string name="loading">Loading...</string>
+    <string name="podcast_details">Podcast Details</string>
     <string name="favourited_tag">Favourited</string>">
 </resources>

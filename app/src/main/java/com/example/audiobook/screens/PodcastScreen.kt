@@ -31,13 +31,13 @@ import androidx.compose.material3.MaterialTheme.typography
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
-import coil3.compose.rememberAsyncImagePainter
+import coil.compose.AsyncImage
 import com.example.audiobook.MainRoute
 import com.example.audiobook.model.Podcasts
+import com.example.audiobook.repository.PodcastMapperManager
 
 @Composable
 fun PodcastScreen(viewModel: PodcastListViewModel, navController: NavHostController) {
@@ -74,10 +74,13 @@ fun PodcastItem(items: List<Podcasts>?, navController: NavHostController) {
         ) {
             LazyColumn {
                 items(items!!) { item ->
+                    if (PodcastMapperManager.getValue(item.id) == null) {
+                        PodcastMapperManager.addValue(item.id, false)
+                    }
                     // Display podcast
                     PodcastCard(item, onItemClicked = {
                         navController.currentBackStackEntry?.savedStateHandle?.set("podcast", item)
-                        navController.navigate(MainRoute.PodcastDetail)
+                        navController.navigate(MainRoute.PodcastDetail.name)
                     },
                         navController)
                     // Add a divider between items
@@ -98,7 +101,6 @@ fun PodcastCard(podcast: Podcasts, onItemClicked: (podcast: Podcasts) -> Unit, n
             .clip(RoundedCornerShape(16.dp))
             .clickable(onClick = {
                 onItemClicked(podcast)
-                //navController.navigate("${MainRoute.PodcastDetail}?podcast=${podcast}")
             }),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
@@ -109,15 +111,14 @@ fun PodcastCard(podcast: Podcasts, onItemClicked: (podcast: Podcasts) -> Unit, n
                 .fillMaxWidth()
                 .padding(16.dp)
         ) {
-            val imagePainter: Painter = rememberAsyncImagePainter(podcast.thumbnail)
-            Image(
+            AsyncImage(
+                model = podcast?.thumbnail,
+                contentDescription = "Podcast Image",
                 modifier = Modifier
-                    .size(100.dp, 100.dp)
+                    .width(100.dp)
+                    .height(100.dp)
                     .border(BorderStroke(1.dp, Color.Black)),
-                painter = imagePainter,
-                alignment = Alignment.CenterStart,
-                contentDescription = "",
-                contentScale = ContentScale.Fit,
+                contentScale = ContentScale.Fit
             )
 
             Spacer(modifier = Modifier.width(16.dp))
@@ -137,14 +138,14 @@ fun PodcastCard(podcast: Podcasts, onItemClicked: (podcast: Podcasts) -> Unit, n
                     style = typography.bodyMedium
                 )
 
-                if(true) {
+                if(PodcastMapperManager.getValue(podcast.id) == true) {
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Text(
                         text = stringResource(id = R.string.favourited_tag),
                         modifier = Modifier.padding(0.dp, 0.dp, 12.dp, 0.dp),
                         style = typography.bodyLarge,
-                        color = MaterialTheme.colorScheme.primary
+                        color = Color.Red,
                     )
                 }
             }

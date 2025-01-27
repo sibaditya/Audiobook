@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.Info
@@ -22,6 +23,7 @@ import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -101,7 +103,8 @@ fun MainNavigation(
     val menus = arrayOf(
         DrawerMenu(Icons.Filled.Face,  LocalContext.current.getString(R.string.list_of_podcasts), MainRoute.Articles.name),
         DrawerMenu(Icons.Filled.Settings,  LocalContext.current.getString(R.string.settings), MainRoute.Settings.name),
-        DrawerMenu(Icons.Filled.Info,  LocalContext.current.getString(R.string.about), MainRoute.About.name)
+        DrawerMenu(Icons.Filled.Info,  LocalContext.current.getString(R.string.about), MainRoute.About.name),
+        DrawerMenu(Icons.Filled.AccountBox,  LocalContext.current.getString(R.string.podcast_details), MainRoute.PodcastDetail.name)
     )
 
     ModalNavigationDrawer(
@@ -112,7 +115,6 @@ fun MainNavigation(
                     coroutineScope.launch {
                         drawerState.close()
                     }
-
                     navController.navigate(route)
                 }
             }

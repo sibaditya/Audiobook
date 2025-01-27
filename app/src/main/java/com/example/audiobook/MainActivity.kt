@@ -27,6 +27,7 @@ class MainActivity: AppCompatActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     // Load the main navigation composable with ViewModel
+                    //MainNavigation(viewModel)
                     MainNavigation(viewModel)
                 }
             }
