@@ -30,13 +30,17 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
+import com.example.audiobook.model.Podcasts
 import com.example.audiobook.viewmodel.PodcastListViewModel
-import com.mvvmJetpackCompose.navigation.screens.AboutScreen
-import com.mvvmJetpackCompose.navigation.screens.ArticlesScreen
-import com.mvvmJetpackCompose.navigation.screens.SettingsScreen
+import com.example.audiobook.screens.AboutScreen
+import com.example.audiobook.screens.ArticlesScreen
+import com.example.audiobook.screens.PodcastsDetailScreen
+import com.example.audiobook.screens.SettingsScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -44,7 +48,8 @@ import kotlinx.coroutines.launch
 enum class MainRoute(value: String) {
     Articles("articles"),
     About("about"),
-    Settings("settings")
+    Settings("settings"),
+    PodcastDetail("podcastDetail")
 }
 
 // Data class to represent a menu item
@@ -115,13 +120,17 @@ fun MainNavigation(
     ) {
         NavHost(navController = navController, startDestination = MainRoute.Articles.name) {
             composable(MainRoute.Articles.name) {
-                ArticlesScreen(drawerState, viewModel)
+                ArticlesScreen(drawerState, viewModel, navController)
             }
             composable(MainRoute.About.name) {
                 AboutScreen(drawerState)
             }
             composable(MainRoute.Settings.name) {
                 SettingsScreen(drawerState)
+            }
+            composable(route = MainRoute.PodcastDetail.name) {
+                val podcast = navController.previousBackStackEntry?.savedStateHandle?.get<Podcasts>("podcast")
+                PodcastsDetailScreen(podcast, navController)
             }
         }
     }

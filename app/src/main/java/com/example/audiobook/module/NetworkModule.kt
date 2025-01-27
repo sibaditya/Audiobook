@@ -1,4 +1,4 @@
-package com.example.mygithub.module
+package com.example.audiobook.module
 
 import com.example.audiobook.api.ApiService
 import com.example.audiobook.api.RetrofitHelper

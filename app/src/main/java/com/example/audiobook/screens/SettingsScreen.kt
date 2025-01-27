@@ -1,4 +1,4 @@
-package com.mvvmJetpackCompose.navigation.screens
+package com.example.audiobook.screens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

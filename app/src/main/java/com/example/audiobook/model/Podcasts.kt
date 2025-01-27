@@ -1,9 +1,11 @@
 package com.example.audiobook.model
 
+import android.os.Parcel
+import android.os.Parcelable
 import com.example.audiobook.model.Extra
 import com.example.audiobook.model.LookingFor
 import com.google.gson.annotations.SerializedName
-
+import kotlinx.serialization.Serializable
 
 data class Podcasts(
 
@@ -38,5 +40,12 @@ data class Podcasts(
   @SerializedName("has_guest_interviews") var hasGuestInterviews: Boolean? = null,
   @SerializedName("update_frequency_hours") var updateFrequencyHours: Long? = null,
   @SerializedName("listen_score_global_rank") var listenScoreGlobalRank: String? = null
+): Parcelable {
+  override fun describeContents(): Int {
+    return 0
+  }
 
-)
+  override fun writeToParcel(dest: Parcel, flags: Int) {
+    TODO("Not yet implemented")
+  }
+}

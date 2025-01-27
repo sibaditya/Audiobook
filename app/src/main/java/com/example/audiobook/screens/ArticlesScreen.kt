@@ -1,4 +1,4 @@
-package com.mvvmJetpackCompose.navigation.screens
+package com.example.audiobook.screens
 
 import PodcastScreen
 import androidx.compose.foundation.layout.Arrangement
@@ -11,12 +11,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.navigation.NavHostController
 import com.example.audiobook.CustomAppBar
 import com.example.audiobook.R
 import com.example.audiobook.viewmodel.PodcastListViewModel
 
 @Composable
-fun ArticlesScreen(drawerState: DrawerState, viewModel: PodcastListViewModel) {
+fun ArticlesScreen(drawerState: DrawerState, viewModel: PodcastListViewModel, navController: NavHostController) {
     // Scaffold is a Material Design layout structure that
     // provides the app's basic structure, like top bar and drawers.
     Scaffold(
@@ -38,7 +39,7 @@ fun ArticlesScreen(drawerState: DrawerState, viewModel: PodcastListViewModel) {
         ) {
             // PodcastScreen is another composable function that is
             // included in the Column to display podcast information.
-            PodcastScreen(viewModel = viewModel)
+            PodcastScreen(viewModel = viewModel, navController)
         }
     }
 }
